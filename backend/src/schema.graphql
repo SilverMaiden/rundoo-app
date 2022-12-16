@@ -1,0 +1,20 @@
+type Supplier {
+    name: String!
+    logoUrl: String!
+    address: String!
+  }
+  
+  type Query {
+    suppliers: [Supplier]
+  }
+
+  type AddSupplierMutationResponse {
+  code: String!
+  success: Boolean!
+  message: String!
+  supplier: Supplier
+}
+
+type Mutation {
+  addSupplier(name: String, address: String, logoUrl: String!): AddSupplierMutationResponse
+}
