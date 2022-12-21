@@ -4,7 +4,9 @@ import TextField from "@mui/material/TextField";
 import { Container } from "@mui/system";
 import { SupplierCard } from "./SupplierCard";
 import { SuppliersDisplay } from "./SuppliersDisplay";
-
+import useSWR from "swr";
+import handler from "../api/suppliers";
+import fetcher from "../../lib/fetcher";
 
 export const SuppliersPageContent = () => {
   return (
@@ -15,7 +17,6 @@ export const SuppliersPageContent = () => {
         <div className="w-full h-full ">
           <TextField className="w-80 h-20 mt-40" label="Search suppliers" />
           <SuppliersDisplay />
-
         </div>
       </Container>
     </div>
