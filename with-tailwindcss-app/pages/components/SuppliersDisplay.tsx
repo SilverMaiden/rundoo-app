@@ -11,7 +11,7 @@ type Props = {
 
 export const SuppliersDisplay = ({ searchField }: Props) => {
   const { data, error } = useSWR<Supplier[], Error>("/api/suppliers", fetcher);
-  if (error) return <div>An error occured.</div>;
+  if (error) return <div>An error occured</div>;
   if (!data) return <div>Loading ...</div>;
 
   const filteredData = data.filter((supplier) =>
