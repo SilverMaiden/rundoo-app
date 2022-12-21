@@ -3,9 +3,8 @@ import TextField from "@mui/material/TextField";
 import { Container } from "@mui/system";
 import { SuppliersDisplay } from "./SuppliersDisplay";
 import { SetStateAction, useState } from "react";
-import { StyledModal } from "../common/StyledModal";
 import { Button } from "@mui/material";
-import { AddSupplierModal } from "./AddSupplierModal";
+import { AddSupplierModal } from "./addSupplierModal/AddSupplierModal";
 
 export const SuppliersPageContent = () => {
   const [searchField, setSearchField] = useState<string>("");
