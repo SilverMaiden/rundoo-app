@@ -14,8 +14,8 @@ import ListItemText from "@mui/material/ListItemText";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
 
-export const drawerWidth = 240;
-export const basePurple = "rgba(75, 33, 105, 1)";
+export const drawerWidth = 185;
+export const basePurple = "rgba(48, 37, 97, 1)";
 export const PermanentDrawer = () => {
   return (
     <>
