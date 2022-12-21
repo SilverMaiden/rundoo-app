@@ -9,14 +9,18 @@
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "@fontsource/roboto": "^4.5.8",
+    "@hookform/resolvers": "^2.9.10",
     "@mui/icons-material": "^5.11.0",
     "@mui/material": "^5.11.1",
     "@prisma/client": "^4.8.0",
+    "country-region-data": "^2.6.0",
+    "country-state-city": "^3.1.2",
     "next": "latest",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-hook-form": "^7.41.0",
-    "swr": "^2.0.0"
+    "swr": "^2.0.0",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "@types/node": "18.11.3",

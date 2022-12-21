@@ -16,7 +16,7 @@ export const SuppliersDisplay = ({ searchField }: Props) => {
   const filteredData = data.filter((supplier) =>
     supplier.name?.toLowerCase().includes(searchField)
   );
-  console.log(filteredData);
+
   return (
     <div className="mt-20 flex flex-row space-x-3 space-y-3 align-middle justify-center flex-wrap">
       {filteredData.map((supplier) => (

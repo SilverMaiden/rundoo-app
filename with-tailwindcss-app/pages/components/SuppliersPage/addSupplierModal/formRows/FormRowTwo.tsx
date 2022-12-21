@@ -1,20 +1,10 @@
 import { FormControl, FormLabel, OutlinedInput } from "@mui/material";
-import { Control, Controller } from "react-hook-form";
+import { Control, Controller, FieldErrorsImpl } from "react-hook-form";
+import { IFormInputs } from "../validationSchema";
 
 type Props = {
-  control: Control<
-    {
-      name: string;
-      logoUrl: string;
-      address1: string;
-      address2: string;
-      city: string;
-      state: string;
-      zip: string;
-      country: string;
-    },
-    any
-  >;
+  control: Control<IFormInputs, any>;
+  errors: Partial<FieldErrorsImpl<IFormInputs>>;
 };
 
 export const FormRowTwo = ({ control }: Props) => {

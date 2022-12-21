@@ -1,23 +1,13 @@
 import { FormControl, FormLabel, OutlinedInput } from "@mui/material";
-import { Control, Controller } from "react-hook-form";
+import { Control, Controller, FieldErrorsImpl } from "react-hook-form";
+import { IFormInputs } from "../validationSchema";
 
-type FormProps = {
-  control: Control<
-    {
-      name: string;
-      logoUrl: string;
-      address1: string;
-      address2: string;
-      city: string;
-      state: string;
-      zip: string;
-      country: string;
-    },
-    any
-  >;
+type Props = {
+  control: Control<IFormInputs, any>,
+  errors: Partial<FieldErrorsImpl<IFormInputs>>
 };
 
-export const FormRowOne = ({ control }: FormProps) => {
+export const FormRowOne = ({ control }: Props) => {
   return (
     <div className=" flex w-full justify-between">
       <Controller
