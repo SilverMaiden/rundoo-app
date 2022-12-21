@@ -1,5 +1,5 @@
 import { GlobalNavBar } from "./components/GlobalNavBar";
-import { SuppliersPageContent } from "./components/SuppliersPageContent";
+import { SuppliersPageContent } from "./components/SuppliersPage/SuppliersPageContent";
 
 const Suppliers = () => {
   return (

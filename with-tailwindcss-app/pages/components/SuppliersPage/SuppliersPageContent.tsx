@@ -1,9 +1,9 @@
-import { PermanentDrawer } from "./PermanentDrawer";
+import { PermanentDrawer } from "../PermanentDrawer";
 import TextField from "@mui/material/TextField";
 import { Container } from "@mui/system";
 import { SuppliersDisplay } from "./SuppliersDisplay";
 import { SetStateAction, useState } from "react";
-import { StyledModal } from "./StyledModal";
+import { StyledModal } from "../common/StyledModal";
 import { Button } from "@mui/material";
 import { AddSupplierModal } from "./AddSupplierModal";
 

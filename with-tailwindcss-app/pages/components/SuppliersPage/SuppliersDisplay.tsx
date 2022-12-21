@@ -2,7 +2,7 @@ import * as react from "react";
 import { SupplierCard } from "./SupplierCard";
 
 import useSWR from "swr";
-import fetcher from "../../lib/fetcher";
+import fetcher from "../../../lib/fetcher";
 import { Supplier } from "@prisma/client";
 
 type Props = {
