@@ -14,9 +14,9 @@ type Props = {
 
 export const SupplierCard: React.FC<Props> = ({ supplier }: Props) => {
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ maxWidth: 200}}>
       <CardMedia
-        sx={{ height: 140 }}
+        sx={{ height: 75 }}
         // THIS SHOULD BE TEMP, final prod should not have || ''
         image={supplier.logo_url || ''}
         title="green iguana"

@@ -3,11 +3,26 @@ import { Button, FormControl, FormLabel, OutlinedInput } from "@mui/material";
 import { StyledModal } from "./StyledModal";
 import { useState } from "react";
 import Box from "@mui/system/Box";
+import useSWRMutation from 'swr/mutation'
+
 
 type Props = {
   open: boolean;
   handleClose: () => void;
 };
+// Fetcher implementation.
+// The extra argument will be passed via the `arg` property of the 2nd parameter.
+// In the example below, `arg` will be `'my_token'`
+async function addSupplier(url: RequestInfo | URL, { arg }: any, data: any) {
+  await fetch(url, {
+    method: "POST",
+    body: data,
+    headers: {
+      Authorization: `Bearer ${arg}`,
+    },
+  });
+}
+
 export const AddSupplierModal = ({ open, handleClose }: Props) => {
   const [formValues, setFormValues] = useState({
     name: "",
@@ -20,10 +35,14 @@ export const AddSupplierModal = ({ open, handleClose }: Props) => {
     country: "",
   });
 
+
+  const handleSubmit = () => {};
+
   return (
     <StyledModal size="md" open={open} handleClose={handleClose}>
       <Box component="form">
         {/* Spacer */}
+
         <div className="space-y-4">
           {/* First Row */}
           <div className=" flex w-full justify-between">
@@ -138,8 +157,10 @@ export const AddSupplierModal = ({ open, handleClose }: Props) => {
           </div>
         </div>
         <div className="flex justify-end space-x-2 w-full">
-          <Button>Cancel</Button>
-          <Button>Confirm</Button>
+          <Button onClick={handleClose}>Cancel</Button>
+          <Button onClick={() => {
+
+          }}>Confirm</Button>
         </div>
       </Box>
     </StyledModal>
