@@ -3,7 +3,7 @@ import * as yup from "yup";
 
 export const schema = yup
   .object({
-    name: yup.string().required(),
+    name: yup.string().required().min(2, 'Must be greater than 2 characters'),
     logoUrl: yup.string().required(),
     address1: yup.string().required(),
     address2: yup.string().required(),

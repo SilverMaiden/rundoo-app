@@ -1,13 +1,27 @@
 import { FormControl, FormLabel, OutlinedInput } from "@mui/material";
-import { Control, Controller, FieldErrorsImpl } from "react-hook-form";
+import { useEffect } from "react";
+import {
+  Control,
+  Controller,
+  FieldErrorsImpl,
+  UseFormTrigger,
+  UseFormWatch,
+  useWatch,
+} from "react-hook-form";
 import { IFormInputs } from "../validationSchema";
 
 type Props = {
-  control: Control<IFormInputs, any>,
-  errors: Partial<FieldErrorsImpl<IFormInputs>>
+  control: Control<IFormInputs, any>;
+  errors: Partial<FieldErrorsImpl<IFormInputs>>;
+  trigger: UseFormTrigger<IFormInputs>;
+  watch: UseFormWatch<IFormInputs>;
 };
 
-export const FormRowOne = ({ control }: Props) => {
+export const FormRowOne = ({ control, trigger, watch, errors }: Props) => {
+  console.log(errors.name);
+
+  //const watchName = useWatch<IFormInputs>({name: 'name'});
+
   return (
     <div className=" flex w-full justify-between">
       <Controller
@@ -18,6 +32,8 @@ export const FormRowOne = ({ control }: Props) => {
             <FormLabel>Name</FormLabel>
             <OutlinedInput
               {...field}
+              error={!!errors.name}
+              // helperText={errors.name && "Oof"}
               placeholder="Tony Stark"
               className="w-56 h-10"
             />

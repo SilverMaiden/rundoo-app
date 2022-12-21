@@ -14,6 +14,8 @@ type Props = {
 export const AddSupplierModal = ({ open, handleClose }: Props) => {
   const {
     control,
+    trigger,
+    watch,
     handleSubmit,
     formState: { errors },
   } = useForm<IFormInputs>({
@@ -26,7 +28,7 @@ export const AddSupplierModal = ({ open, handleClose }: Props) => {
   return (
     <StyledModal open={open} handleClose={handleClose} size="md">
       <form className="space-y-4" onSubmit={handleSubmit(onSubmit)}>
-        <FormRowOne control={control} errors={errors} />
+        <FormRowOne control={control} watch={watch} trigger={trigger} errors={errors} />
         <FormRowTwo control={control} errors={errors} />
         <FormRowThree control={control} errors={errors} />
         {/* Fourth Row */}
