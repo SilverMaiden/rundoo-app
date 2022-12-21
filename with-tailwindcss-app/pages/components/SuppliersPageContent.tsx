@@ -2,11 +2,7 @@ import * as React from "react";
 import { PermanentDrawer } from "./PermanentDrawer";
 import TextField from "@mui/material/TextField";
 import { Container } from "@mui/system";
-import { SupplierCard } from "./SupplierCard";
 import { SuppliersDisplay } from "./SuppliersDisplay";
-import useSWR from "swr";
-import handler from "../api/suppliers";
-import fetcher from "../../lib/fetcher";
 
 export const SuppliersPageContent = () => {
   return (

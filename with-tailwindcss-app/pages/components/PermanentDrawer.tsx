@@ -14,22 +14,12 @@ import ListItemText from "@mui/material/ListItemText";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
 
-const drawerWidth = 240;
-
+export const drawerWidth = 240;
+export const basePurple = "rgba(75, 33, 105, 1)";
 export const PermanentDrawer = () => {
   return (
     <>
       <CssBaseline />
-      <AppBar
-        position="fixed"
-        sx={{ width: `calc(100% - ${drawerWidth}px)`, ml: `${drawerWidth}px` }}
-      >
-        <Toolbar>
-          <Typography variant="h6" noWrap component="div">
-            Suppliers
-          </Typography>
-        </Toolbar>
-      </AppBar>
       <Drawer
         sx={{
           width: drawerWidth,
@@ -37,6 +27,10 @@ export const PermanentDrawer = () => {
           "& .MuiDrawer-paper": {
             width: drawerWidth,
             boxSizing: "border-box",
+            backgroundColor: basePurple,
+            color: "white",
+
+
           },
         }}
         variant="permanent"

@@ -7,16 +7,18 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { Supplier } from "@prisma/client";
 
-type Props {
+
+type Props = {
   supplier: Supplier;
 }
 
-export const SupplierCard: React.FC<Props> = (props) => {
+export const SupplierCard: React.FC<Props> = ({ supplier }: Props) => {
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardMedia
         sx={{ height: 140 }}
-        image={props.logo_url}
+        // THIS SHOULD BE TEMP, final prod should not have || ''
+        image={supplier.logo_url || ''}
         title="green iguana"
       />
       <CardContent>
