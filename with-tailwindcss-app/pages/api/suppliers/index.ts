@@ -11,23 +11,20 @@ export default async function handler(
     const getSuppliersResult = await prisma.supplier
       .findMany()
       .catch((error) => {
-        console.log(error);
+        res.json(error);
       });
 
     res.json(getSuppliersResult);
   }
 
   if (req.method === "POST") {
-    console.log(req.body);
     const createSupplierResult = await prisma.supplier
       .create({
         data: JSON.parse(req.body),
       })
       .catch((error) => {
-        console.log("error is ", error);
         res.json(error);
       });
-    console.log("createSupplierResult is ", createSupplierResult);
     res.json(createSupplierResult);
   }
 }

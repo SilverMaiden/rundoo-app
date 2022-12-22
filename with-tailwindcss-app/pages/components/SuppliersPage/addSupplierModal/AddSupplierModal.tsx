@@ -24,9 +24,7 @@ export const AddSupplierModal = ({ open, handleClose }: Props) => {
     resolver: yupResolver(schema),
   });
   const onSubmit: SubmitHandler<any> = async (data) => {
-    console.log("i've been activateddd");
     const { name, logoUrl, ...addressData } = data;
-
     const newSupplierData = {
       name: name,
       logo_url: logoUrl,
@@ -35,16 +33,23 @@ export const AddSupplierModal = ({ open, handleClose }: Props) => {
     // We need to first add the supplier with no address data
     // on success, we'll need to make another post request to add
     // the address to the Address table, setting
-    const stuff = await fetch("/api/suppliers", {
+    await fetch("/api/addresses", {
       method: "POST",
       mode: "cors",
-      body: JSON.stringify(newSupplierData),
+      body: JSON.stringify(addressData),
     })
       .then((response) => {
         return response;
       })
       .then((data) => {
         return data.json();
+      })
+      .then((data) => {
+        fetch("/api/suppliers", {
+          method: "POST",
+          mode: "cors",
+          body: JSON.stringify({...newSupplierData, address_id: data.id}),
+        });
       });
   };
 
@@ -67,7 +72,7 @@ export const AddSupplierModal = ({ open, handleClose }: Props) => {
         {/* Fourth Row */}
         <div className=" flex w-full justify-between mb-4">
           <Controller
-            name="zip"
+            name="zip_code"
             control={control}
             render={({ field }) => (
               <FormControl className="flex align-middle justify-center">

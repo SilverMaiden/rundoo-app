@@ -26,7 +26,7 @@ type Props = {
       address2?: boolean | undefined;
       city?: boolean | undefined;
       state?: boolean | undefined;
-      zip?: boolean | undefined;
+      zip_code?: boolean | undefined;
       country?: boolean | undefined;
     }>
   >;

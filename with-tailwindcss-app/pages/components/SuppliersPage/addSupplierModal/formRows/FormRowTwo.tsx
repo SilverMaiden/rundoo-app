@@ -11,7 +11,7 @@ export const FormRowTwo = ({ control }: Props) => {
   return (
     <div className=" flex w-full justify-between">
       <Controller
-        name="address1"
+        name="address_1"
         control={control}
         render={({ field }) => (
           <FormControl className="flex align-middle justify-center">
@@ -25,7 +25,7 @@ export const FormRowTwo = ({ control }: Props) => {
         )}
       />
       <Controller
-        name="address2"
+        name="address_2"
         control={control}
         render={({ field }) => (
           <FormControl className="flex align-middle justify-center">

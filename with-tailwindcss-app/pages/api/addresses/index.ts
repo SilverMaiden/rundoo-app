@@ -15,7 +15,7 @@ export default async function handler(
 
   if (req.method === "POST") {
     const createSupplierResult = await prisma.address.create({
-      data: req.body,
+      data: JSON.parse(req.body),
     });
 
     res.json(createSupplierResult);

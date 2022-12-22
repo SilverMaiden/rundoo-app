@@ -23,7 +23,7 @@ export default async function handler(
       where: {
         id: supplierId
       },
-      data: req.body,
+      data: JSON.parse(req.body),
     });
     res.json(updateSupplierResult);
   }

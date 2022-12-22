@@ -8,29 +8,26 @@ datasource db {
 }
 
 model Address {
-  id                                         String     @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
-  created_at                                 DateTime?  @default(now()) @db.Timestamptz(6)
-  address_1                                  String?    @db.VarChar
-  address_2                                  String?    @db.VarChar
-  city                                       String?    @db.VarChar
-  state                                      String?    @db.VarChar
-  zip_code                                   String?    @db.VarChar
-  country                                    String?    @db.VarChar
-  supplier_id                                String?    @db.Uuid
-  suppliers_addresses_supplier_idTosuppliers Supplier?  @relation("addresses_supplier_idTosuppliers", fields: [supplier_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
-  suppliers                                  Supplier[]
+  id         String     @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  created_at DateTime?  @default(now()) @db.Timestamptz(6)
+  address_1  String?    @db.VarChar
+  address_2  String?    @db.VarChar
+  city       String?    @db.VarChar
+  state      String?    @db.VarChar
+  zip_code   String?    @db.VarChar
+  country    String?    @db.VarChar
+  suppliers  Supplier[]
 
   @@map("addresses")
 }
 
 model Supplier {
-  id                                         String    @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
-  created_at                                 DateTime? @default(now()) @db.Timestamptz(6)
-  name                                       String?   @db.VarChar
-  logo_url                                   String?   @db.VarChar
-  address_id                                 String?   @db.Uuid
-  addresses_addresses_supplier_idTosuppliers Address[] @relation("addresses_supplier_idTosuppliers")
-  addresses                                  Address?  @relation(fields: [address_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  id         String    @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  created_at DateTime? @default(now()) @db.Timestamptz(6)
+  name       String?   @db.VarChar
+  logo_url   String?   @db.VarChar
+  address_id String?   @db.Uuid
+  addresses  Address?  @relation(fields: [address_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
 
   @@map("suppliers")
 }

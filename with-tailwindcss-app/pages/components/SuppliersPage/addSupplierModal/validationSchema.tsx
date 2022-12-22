@@ -5,11 +5,11 @@ export const schema = yup
   .object({
     name: yup.string().required().min(10, 'Must be greater than 2 characters'),
     logoUrl: yup.string().url().required(),
-    address1: yup.string().required(),
-    address2: yup.string().required(),
+    address_1: yup.string().required(),
+    address_2: yup.string().required(),
     city: yup.string().required(),
     state: yup.string().required(),
-    zip: yup.string().required(),
+    zip_code: yup.string().required(),
     country: yup.string().required(),
   })
   .required();
@@ -17,21 +17,21 @@ export const schema = yup
 export interface IFormInputs {
   name: string;
   logoUrl: string;
-  address1: string;
-  address2: string;
+  address_1: string;
+  address_2: string;
   city: string;
   state: string;
-  zip: string;
+  zip_code: string;
   country: string;
 }
 
 export const defaultValues: IFormInputs = {
   name: "",
   logoUrl: "",
-  address1: "",
-  address2: "",
+  address_1: "",
+  address_2: "",
   city: "",
   state: "",
-  zip: "",
+  zip_code: "",
   country: "",
 };
