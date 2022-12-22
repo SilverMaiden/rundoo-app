@@ -3,8 +3,14 @@ import { AppBar, Button, Toolbar, Typography } from "@mui/material";
 import { basePurple, drawerWidth } from "./PermanentDrawer";
 
 export const lightPurple = "rgba(165, 152, 223, 1)";
+type Props = {
+  open: boolean;
+  handleClose: () => void;
+  setOpen: react.Dispatch<react.SetStateAction<boolean>>
+};
 
-export const GlobalNavBar: React.FC = () => {
+
+export const GlobalNavBar: React.FC<Props> = ({open, handleClose, setOpen} : Props) => {
   return (
     <AppBar
       className="flex align-middle"
@@ -20,6 +26,7 @@ export const GlobalNavBar: React.FC = () => {
         </Typography>
         <Button
           className="bg-purple-400 hover:bg-purple-600 text-white"
+          onClick={() => setOpen(true)}
         >
           Add Supplier
         </Button>

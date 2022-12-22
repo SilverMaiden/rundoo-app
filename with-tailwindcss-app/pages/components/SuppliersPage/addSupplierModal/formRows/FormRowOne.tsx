@@ -32,9 +32,8 @@ type Props = {
   >;
 };
 
-export const FormRowOne = ({
+export const FormRowOne: React.FC<Props> = ({
   control,
-
   errors,
   touchedFields,
 }: Props) => {

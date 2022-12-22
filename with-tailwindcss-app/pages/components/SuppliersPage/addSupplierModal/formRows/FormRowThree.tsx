@@ -15,7 +15,7 @@ type Props = {
   errors: Partial<FieldErrorsImpl<IFormInputs>>;
 };
 
-export const FormRowThree = ({ control }: Props) => {
+export const FormRowThree: React.FC<Props> = ({ control }: Props) => {
   const allCountries = Country.getAllCountries();
   let currentRegions: IState[] | null = null;
   const [currentCountryCode, setCurrentCountryCode] = useState<string>("");

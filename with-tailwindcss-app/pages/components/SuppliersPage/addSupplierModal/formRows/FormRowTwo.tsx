@@ -7,7 +7,7 @@ type Props = {
   errors: Partial<FieldErrorsImpl<IFormInputs>>;
 };
 
-export const FormRowTwo = ({ control }: Props) => {
+export const FormRowTwo: React.FC<Props> = ({ control }: Props) => {
   return (
     <div className=" flex w-full justify-between">
       <Controller

@@ -1,10 +1,13 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Button, FormControl, FormLabel, OutlinedInput } from "@mui/material";
-import axios from "axios";
+import useSWR from "swr";
 import { useForm, Controller, SubmitHandler } from "react-hook-form";
+import fetcher from "../../../../lib/fetcher";
 import { StyledModal } from "../../common/StyledModal";
 import { FormRowOne } from "./formRows/FormRowOne";
 import { FormRowThree } from "./formRows/FormRowThree";
+import { Supplier } from "@prisma/client";
+
 import { FormRowTwo } from "./formRows/FormRowTwo";
 import { defaultValues, IFormInputs, schema } from "./validationSchema";
 
@@ -13,7 +16,7 @@ type Props = {
   handleClose: () => void;
 };
 
-export const AddSupplierModal = ({ open, handleClose }: Props) => {
+export const AddSupplierModal: React.FC<Props> = ({ open, handleClose }: Props) => {
   const {
     control,
     trigger,
@@ -23,16 +26,14 @@ export const AddSupplierModal = ({ open, handleClose }: Props) => {
     defaultValues,
     resolver: yupResolver(schema),
   });
+  const { mutate } = useSWR<Supplier[], Error>("/api/suppliers", fetcher);
+
   const onSubmit: SubmitHandler<any> = async (data) => {
     const { name, logoUrl, ...addressData } = data;
     const newSupplierData = {
       name: name,
       logo_url: logoUrl,
     };
-
-    // We need to first add the supplier with no address data
-    // on success, we'll need to make another post request to add
-    // the address to the Address table, setting
     await fetch("/api/addresses", {
       method: "POST",
       mode: "cors",
@@ -51,6 +52,8 @@ export const AddSupplierModal = ({ open, handleClose }: Props) => {
           body: JSON.stringify({...newSupplierData, address_id: data.id}),
         });
       });
+      mutate();
+      handleClose();
   };
 
   return (

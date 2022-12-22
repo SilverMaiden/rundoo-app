@@ -8,12 +8,12 @@ type Props = {
   searchField: string;
 };
 
-export const SuppliersDisplay = ({ searchField }: Props) => {
+export const SuppliersDisplay: React.FC<Props> = ({ searchField }: Props) => {
   const { data, error } = useSWR<Supplier[], Error>("/api/suppliers", fetcher);
   if (error) return <div>An error occured</div>;
   if (!data) return <div>Loading ...</div>;
-
-  const filteredData = data.filter((supplier) =>
+console.log(data)
+  const filteredData = data?.filter((supplier) =>
     supplier.name?.toLowerCase().includes(searchField)
   );
 

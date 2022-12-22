@@ -6,13 +6,8 @@ import { SetStateAction, useState } from "react";
 import { Button } from "@mui/material";
 import { AddSupplierModal } from "./addSupplierModal/AddSupplierModal";
 
-export const SuppliersPageContent = () => {
+export const SuppliersPageContent: React.FC = () => {
   const [searchField, setSearchField] = useState<string>("");
-  const [open, setOpen] = useState<boolean>(false);
-
-  const handleModalClose = () => {
-    setOpen(false);
-  };
 
   const handleSearchChange = (e: {
     target: { value: SetStateAction<string> };
@@ -24,7 +19,6 @@ export const SuppliersPageContent = () => {
   return (
     <div className="flex align-middle justify-center text-center h-screen w-full">
       <PermanentDrawer />
-      <AddSupplierModal open={open} handleClose={handleModalClose} />
 
       <Container maxWidth="lg">
         <div className="w-full h-full">
@@ -36,12 +30,7 @@ export const SuppliersPageContent = () => {
           />
           <SuppliersDisplay searchField={searchField} />
         </div>
-        <Button
-          onClick={() => setOpen(true)}
-          className="bg-purple-500 text-white"
-        >
-          add supplier
-        </Button>
+
       </Container>
     </div>
   );
