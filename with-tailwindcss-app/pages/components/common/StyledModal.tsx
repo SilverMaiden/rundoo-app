@@ -3,6 +3,7 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
+import CloseIcon from "@mui/icons-material/Close";
 
 type Props = {
   open: boolean;
@@ -44,17 +45,22 @@ export const StyledModal = ({ open, handleClose, children, size }: Props) => {
     },
   };
   return (
-    <div>
-      <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Box sx={style} className="rounded-md h-auto">
-          {children}
-        </Box>
-      </Modal>
-    </div>
+    <Modal
+      open={open}
+      onClose={handleClose}
+      aria-labelledby="modal-modal-title"
+      aria-describedby="modal-modal-description"
+    >
+      <Box sx={style} className="rounded-md h-auto">
+        <div className="flex justify-end w-full">
+          <CloseIcon
+            className="w-6 text-gray-400 hover:text-gray-300 hover:cursor-pointer"
+            onClick={handleClose}
+          />
+        </div>
+
+        {children}
+      </Box>
+    </Modal>
   );
 };

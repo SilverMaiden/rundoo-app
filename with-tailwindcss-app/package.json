@@ -17,10 +17,12 @@
     "classnames": "^2.3.2",
     "country-region-data": "^2.6.0",
     "country-state-city": "^3.1.2",
+    "jest": "^29.3.1",
     "next": "latest",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-hook-form": "^7.41.0",
+    "react-scroll-parallax": "^3.3.2",
     "swr": "^2.0.0",
     "yup": "^0.32.11"
   },

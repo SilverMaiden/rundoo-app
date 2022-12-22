@@ -1,16 +1,15 @@
 import * as react from "react";
 import { AppBar, Button, Toolbar, Typography } from "@mui/material";
-import { basePurple, drawerWidth } from "./PermanentDrawer";
+import { basePurple, drawerWidth } from "./FixedDrawer";
 
 export const lightPurple = "rgba(165, 152, 223, 1)";
 type Props = {
-  open: boolean;
-  handleClose: () => void;
-  setOpen: react.Dispatch<react.SetStateAction<boolean>>
+  setOpen: react.Dispatch<react.SetStateAction<boolean>>;
 };
 
-
-export const GlobalNavBar: React.FC<Props> = ({open, handleClose, setOpen} : Props) => {
+export const NavBar: React.FC<Props> = ({
+  setOpen,
+}: Props) => {
   return (
     <AppBar
       className="flex align-middle"

@@ -1,13 +1,9 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Button, FormControl, FormLabel, OutlinedInput } from "@mui/material";
-import useSWR from "swr";
-import { useForm, Controller, SubmitHandler } from "react-hook-form";
-import fetcher from "../../../../lib/fetcher";
+import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import { StyledModal } from "../../common/StyledModal";
 import { FormRowOne } from "./formRows/FormRowOne";
 import { FormRowThree } from "./formRows/FormRowThree";
-import { Supplier } from "@prisma/client";
-
 import { FormRowTwo } from "./formRows/FormRowTwo";
 import { defaultValues, IFormInputs, schema } from "./validationSchema";
 
@@ -26,10 +22,14 @@ export const AddSupplierModal: React.FC<Props> = ({ open, handleClose }: Props) 
     defaultValues,
     resolver: yupResolver(schema),
   });
-  const { mutate } = useSWR<Supplier[], Error>("/api/suppliers", fetcher);
 
   const onSubmit: SubmitHandler<any> = async (data) => {
-    const { name, logoUrl, ...addressData } = data;
+
+    const cleanedData = Object.fromEntries(
+      Object.entries(data).map(([key, value]) => [key, value.toLowerCase().trim()])
+    );
+    const { name, logoUrl, ...addressData } = cleanedData;
+
     const newSupplierData = {
       name: name,
       logo_url: logoUrl,
@@ -52,7 +52,6 @@ export const AddSupplierModal: React.FC<Props> = ({ open, handleClose }: Props) 
           body: JSON.stringify({...newSupplierData, address_id: data.id}),
         });
       });
-      mutate();
       handleClose();
   };
 
