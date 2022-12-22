@@ -11,8 +11,8 @@ import { useState } from "react";
 import { IFormInputs } from "../validationSchema";
 
 type Props = {
-  control: Control<IFormInputs, any>,
-  errors: Partial<FieldErrorsImpl<IFormInputs>>
+  control: Control<IFormInputs, any>;
+  errors: Partial<FieldErrorsImpl<IFormInputs>>;
 };
 
 export const FormRowThree = ({ control }: Props) => {
@@ -21,8 +21,7 @@ export const FormRowThree = ({ control }: Props) => {
   const [currentCountryCode, setCurrentCountryCode] = useState<string>("");
 
   currentRegions = State.getStatesOfCountry(currentCountryCode);
-  console.log(currentCountryCode);
-  console.log("current regions is ", currentRegions);
+
   return (
     <div className="flex w-full justify-between space-x-4">
       <Controller

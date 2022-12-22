@@ -1,10 +1,11 @@
+import { yupResolver } from "@hookform/resolvers/yup";
 import { Button, FormControl, FormLabel, OutlinedInput } from "@mui/material";
 import { useForm, Controller, SubmitHandler } from "react-hook-form";
 import { StyledModal } from "../../common/StyledModal";
 import { FormRowOne } from "./formRows/FormRowOne";
 import { FormRowThree } from "./formRows/FormRowThree";
 import { FormRowTwo } from "./formRows/FormRowTwo";
-import { defaultValues, IFormInputs } from "./validationSchema";
+import { defaultValues, IFormInputs, schema } from "./validationSchema";
 
 type Props = {
   open: boolean;
@@ -14,21 +15,37 @@ type Props = {
 export const AddSupplierModal = ({ open, handleClose }: Props) => {
   const {
     control,
-    trigger,
     watch,
+    trigger,
+    setValue,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, touchedFields },
   } = useForm<IFormInputs>({
     defaultValues,
+    resolver: yupResolver(schema),
   });
   const onSubmit: SubmitHandler<any> = (data) => {
     console.log(data);
   };
+  console.log("errors is ", errors);
 
   return (
     <StyledModal open={open} handleClose={handleClose} size="md">
-      <form className="space-y-4" onSubmit={handleSubmit(onSubmit)}>
-        <FormRowOne control={control} watch={watch} trigger={trigger} errors={errors} />
+      <form
+        className="space-y-4"
+        onBlur={() => {
+          trigger();
+        }}
+        onSubmit={handleSubmit(onSubmit)}
+      >
+        <FormRowOne
+          control={control}
+          watch={watch}
+          trigger={trigger}
+          errors={errors}
+          setValue={setValue}
+          touchedFields={touchedFields}
+        />
         <FormRowTwo control={control} errors={errors} />
         <FormRowThree control={control} errors={errors} />
         {/* Fourth Row */}
