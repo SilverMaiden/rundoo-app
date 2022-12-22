@@ -1,5 +1,6 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Button, FormControl, FormLabel, OutlinedInput } from "@mui/material";
+import axios from "axios";
 import { useForm, Controller, SubmitHandler } from "react-hook-form";
 import { StyledModal } from "../../common/StyledModal";
 import { FormRowOne } from "./formRows/FormRowOne";
@@ -15,19 +16,37 @@ type Props = {
 export const AddSupplierModal = ({ open, handleClose }: Props) => {
   const {
     control,
-    watch,
     trigger,
-    setValue,
     handleSubmit,
     formState: { errors, touchedFields },
   } = useForm<IFormInputs>({
     defaultValues,
     resolver: yupResolver(schema),
   });
-  const onSubmit: SubmitHandler<any> = (data) => {
-    console.log(data);
+  const onSubmit: SubmitHandler<any> = async (data) => {
+    console.log("i've been activateddd");
+    const { name, logoUrl, ...addressData } = data;
+
+    const newSupplierData = {
+      name: name,
+      logo_url: logoUrl,
+    };
+
+    // We need to first add the supplier with no address data
+    // on success, we'll need to make another post request to add
+    // the address to the Address table, setting
+    const stuff = await fetch("/api/suppliers", {
+      method: "POST",
+      mode: "cors",
+      body: JSON.stringify(newSupplierData),
+    })
+      .then((response) => {
+        return response;
+      })
+      .then((data) => {
+        return data.json();
+      });
   };
-  console.log("errors is ", errors);
 
   return (
     <StyledModal open={open} handleClose={handleClose} size="md">
@@ -40,10 +59,7 @@ export const AddSupplierModal = ({ open, handleClose }: Props) => {
       >
         <FormRowOne
           control={control}
-          watch={watch}
-          trigger={trigger}
           errors={errors}
-          setValue={setValue}
           touchedFields={touchedFields}
         />
         <FormRowTwo control={control} errors={errors} />

@@ -18,23 +18,26 @@ import { IFormInputs } from "../validationSchema";
 type Props = {
   control: Control<IFormInputs, any>;
   errors: Partial<FieldErrorsImpl<IFormInputs>>;
-  trigger: UseFormTrigger<IFormInputs>;
-  watch: UseFormWatch<IFormInputs>;
-  setValue: UseFormSetValue<IFormInputs>;
-  touchedFields: Partial<Readonly<IFormInputs>>;
+  touchedFields: Partial<
+    Readonly<{
+      name?: boolean | undefined;
+      logoUrl?: boolean | undefined;
+      address1?: boolean | undefined;
+      address2?: boolean | undefined;
+      city?: boolean | undefined;
+      state?: boolean | undefined;
+      zip?: boolean | undefined;
+      country?: boolean | undefined;
+    }>
+  >;
 };
 
 export const FormRowOne = ({
   control,
-  trigger,
-  watch,
+
   errors,
-  setValue,
   touchedFields,
 }: Props) => {
-  console.log(errors);
-  console.log(touchedFields);
-
   return (
     <div className="flex w-full justify-between">
       <Controller

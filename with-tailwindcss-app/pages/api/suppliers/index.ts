@@ -8,35 +8,26 @@ export default async function handler(
   res: NextApiResponse
 ) {
   if (req.method === "GET") {
-    const getSuppliersResult = await prisma.supplier.findMany();
+    const getSuppliersResult = await prisma.supplier
+      .findMany()
+      .catch((error) => {
+        console.log(error);
+      });
 
     res.json(getSuppliersResult);
   }
 
   if (req.method === "POST") {
-    const createSupplierResult = await prisma.supplier.create({
-      data: req.body,
-    });
-
+    console.log(req.body);
+    const createSupplierResult = await prisma.supplier
+      .create({
+        data: JSON.parse(req.body),
+      })
+      .catch((error) => {
+        console.log("error is ", error);
+        res.json(error);
+      });
+    console.log("createSupplierResult is ", createSupplierResult);
     res.json(createSupplierResult);
-  }
-
-  if (req.method === "PUT") {
-    const updateSupplierResult = await prisma.supplier.update({
-      where: {
-        id: req.body.id,
-      },
-      data: req.body,
-    });
-    res.json(updateSupplierResult);
-  }
-
-  if (req.method === "DELETE") {
-    const deleteSupplierResult = await prisma.supplier.delete({
-      where: {
-        id: req.body.id,
-      }
-    });
-    res.json(deleteSupplierResult);
   }
 }
