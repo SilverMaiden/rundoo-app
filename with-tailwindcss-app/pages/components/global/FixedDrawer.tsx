@@ -14,8 +14,9 @@ import MailIcon from "@mui/icons-material/Mail";
 export const drawerWidth = 70;
 export const basePurple = "rgba(29,44,96,255)";
 export const basePink = "rgba(236,186,199,255)";
-export const darkerPurple = "rgba(20,50,108,255)";
-export const FixedDrawer = () => {
+export const darkerPurple = "#141f43";
+
+export const FixedDrawer: React.FC = () => {
   return (
     <>
       <CssBaseline />
@@ -39,7 +40,14 @@ export const FixedDrawer = () => {
           {["Favorites", "Messages", "Send email", "Drafts"].map(
             (text, index) => (
               <ListItem key={text} disablePadding>
-                <ListItemButton>
+                <ListItemButton
+                  sx={{
+                    ":hover": {
+                      backgroundColor: darkerPurple,
+                    },
+                  }}
+                  aria-label="list item"
+                >
                   <ListItemIcon className="text-white">
                     {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
                   </ListItemIcon>

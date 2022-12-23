@@ -18,7 +18,10 @@ export const SuppliersPageContent: React.FC = () => {
     <div className="flex w-full h-full align-middle justify-center text-center pb-20">
       <Container disableGutters maxWidth={false}>
         <ParallaxAppBanner />
-        <h1 className="overflow-hidden mt-20 text-2xl px-96 md:text-4xl text-gray-400 font-thin">
+        <h1
+          aria-label="explore-our-collection"
+          className="overflow-hidden mt-20 text-2xl px-96 md:text-4xl text-gray-600 font-thin"
+        >
           Explore our extensive collection of the worlds best suppliers
         </h1>
         <TextField
