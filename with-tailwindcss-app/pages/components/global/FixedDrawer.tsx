@@ -12,7 +12,9 @@ import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
 
 export const drawerWidth = 70;
-export const basePurple = "rgba(48, 37, 97, 1)";
+export const basePurple = "rgba(29,44,96,255)";
+export const basePink = "rgba(236,186,199,255)";
+export const darkerPurple = "rgba(20,50,108,255)";
 export const FixedDrawer = () => {
   return (
     <>
@@ -38,7 +40,7 @@ export const FixedDrawer = () => {
             (text, index) => (
               <ListItem key={text} disablePadding>
                 <ListItemButton>
-                  <ListItemIcon>
+                  <ListItemIcon className="text-white">
                     {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
                   </ListItemIcon>
                 </ListItemButton>

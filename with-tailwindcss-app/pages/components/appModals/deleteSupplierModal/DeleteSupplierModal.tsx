@@ -29,7 +29,7 @@ export const DeleteSupplierModal: React.FC<Props> = ({
       <form className="flex w-full flex-col " onSubmit={deleteSupplier}>
         <h1 className="text-2xl mb-4"> Delete Supplier?</h1>
         <span className="">
-          Are you sure you want to delete <b>{supplier.name}</b>? You will not
+          Are you sure you want to delete <b style={{textTransform: 'capitalize'}}>{supplier.name}</b>? You will not
           be able to undo this action.
         </span>
 

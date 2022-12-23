@@ -1,6 +1,6 @@
 import * as react from "react";
 import { AppBar, Button, Toolbar, Typography } from "@mui/material";
-import { basePurple, drawerWidth } from "./FixedDrawer";
+import { basePink, basePurple, drawerWidth } from "./FixedDrawer";
 
 export const lightPurple = "rgba(165, 152, 223, 1)";
 type Props = {
@@ -24,7 +24,7 @@ export const NavBar: React.FC<Props> = ({
           Suppliers
         </Typography>
         <Button
-          className="bg-purple-400 hover:bg-purple-600 text-white"
+          className="text-white"
           onClick={() => setOpen(true)}
         >
           Add Supplier

@@ -42,14 +42,14 @@ export const SupplierCard: React.FC<Props> = ({
   const { address_1, address_2, city, state, country, zip_code } = data[0];
   console.log("data is ", data);
   return (
-    <Card sx={{ maxWidth: 300, width:300 }}>
+    <Card sx={{ maxWidth: 300, width:300, }}>
       <div className="flex w-full justify-end">
         <CloseIcon
           onClick={() => {
             setSupplierToDelete(supplier);
             setOpenDeleteSupplierModal(true);
           }}
-          className="w-4 hover:text-gray-300 hover:cursor-pointer"
+          className="w-4 m-2 hover:text-gray-300 hover:cursor-pointer"
         />
       </div>
       {supplier.logo_url && (
@@ -74,10 +74,6 @@ export const SupplierCard: React.FC<Props> = ({
           <div>{country}</div>
         </Typography>
       </CardContent>
-      <CardActions>
-        <Button size="small">Share</Button>
-        <Button size="small">Learn More</Button>
-      </CardActions>
     </Card>
   );
 };
