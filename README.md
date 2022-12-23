@@ -1,6 +1,25 @@
 # rundoo-app
 My take on the Rundoo take-home test app. Details for the app can be found below, along with the original assigment details.
 
+## How to run this project
+
+Git clone the repo
+
+cd into the project, and then into the with-tailwindcss-app directory
+
+Run npm i to install node packages
+
+Run npm run dev to start the project on your machine
+
+
+## Tech used
+
+NextJS, Supabase (and PostgreSQL through it), Prisma, Material UI, React, Typescript, SWR,
+
+## Details
+
+WIP!!! :)
+
 
 # Assignment
 Rundoo Take-Home
