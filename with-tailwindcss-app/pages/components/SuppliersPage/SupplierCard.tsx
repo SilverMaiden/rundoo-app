@@ -42,42 +42,44 @@ export const SupplierCard: React.FC<Props> = ({
   const { address_1, address_2, city, state, country, zip_code } = data[0];
   console.log("data is ", data);
   return (
-    <Card sx={{ maxWidth: 300, width:300 }}>
+    <Card sx={{ maxWidth: 300, width: 300 }}>
       <div className="flex w-full justify-end">
         <CloseIcon
           onClick={() => {
             setSupplierToDelete(supplier);
             setOpenDeleteSupplierModal(true);
           }}
-          className="w-4 hover:text-gray-300 hover:cursor-pointer"
+          className="w-4 m-2 hover:text-gray-300 hover:cursor-pointer"
         />
       </div>
       {supplier.logo_url && (
         <CardMedia
           sx={{ height: 150 }}
-          image={supplier.logo_url || "https://socialimpact.com/wp-content/uploads/2021/03/logo-placeholder.jpg"}
+          image={
+            supplier.logo_url ||
+            "https://socialimpact.com/wp-content/uploads/2021/03/logo-placeholder.jpg"
+          }
           title={`${supplier.name} logo`}
-
         />
       )}
-      <CardContent sx={{ textTransform: 'capitalize', m: 1 }}>
+      <CardContent sx={{ textTransform: "capitalize", m: 1 }}>
         <Typography gutterBottom variant="h5" component="div">
           {supplier.name}
         </Typography>
         <Typography className="text-start">Address:</Typography>
-        <Typography className="flex flex-col justify-start text-start" variant="body2" color="text.secondary">
+        <Typography
+          className="flex flex-col justify-start text-start"
+          variant="body2"
+          color="text.secondary"
+        >
           <div>{address_1}</div>
           <div>{address_2}</div>
           <div>
-            {city}, {state && `${state},`} {zip_code}{" "}
+            {city}, {state && `${state},`} {zip_code}
           </div>
           <div>{country}</div>
         </Typography>
       </CardContent>
-      <CardActions>
-        <Button size="small">Share</Button>
-        <Button size="small">Learn More</Button>
-      </CardActions>
     </Card>
   );
 };

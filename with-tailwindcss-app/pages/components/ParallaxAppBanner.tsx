@@ -1,7 +1,7 @@
 import { ParallaxBanner } from "react-scroll-parallax";
 import { BannerLayer } from "react-scroll-parallax/dist/components/ParallaxBanner/types";
 
-export const ParallaxAppBanner = () => {
+export const ParallaxAppBanner: React.FC = () => {
     const background: BannerLayer = {
       image:
         'https://s3-us-west-2.amazonaws.com/s.cdpn.io/105988/banner-background.jpg',
@@ -27,7 +27,7 @@ export const ParallaxAppBanner = () => {
 
     const foreground: BannerLayer = {
       image:
-        'https://s3-us-west-2.amazonaws.com/s.cdpn.io/105988/banner-foreground.png',
+        'https://svgur.com/i/ozi.svg',
       translateY: [0, 15],
       scale: [1, 1.1, 'easeOutCubic'],
       shouldAlwaysCompleteAnimation: true,

@@ -6,12 +6,15 @@ import { Supplier } from "@prisma/client";
 import { useState } from "react";
 import { DeleteSupplierModal } from "../appModals/deleteSupplierModal/DeleteSupplierModal";
 import CircularProgress from "@mui/material/CircularProgress";
+import { NoSearchResults } from "../common/NoSearchResults";
 
 type Props = {
   searchField: string;
 };
 
-export const SupplierCardsDisplay: React.FC<Props> = ({ searchField }: Props) => {
+export const SupplierCardsDisplay: React.FC<Props> = ({
+  searchField,
+}: Props) => {
   //State for the Delete Supplier Confirmation Modal
   const [openDeleteSupplierModal, setOpenDeleteSupplierModal] =
     useState<boolean>(false);
@@ -33,8 +36,8 @@ export const SupplierCardsDisplay: React.FC<Props> = ({ searchField }: Props) =>
   if (!data) {
     //Loading state
     if (isLoading) return <CircularProgress />;
-    else
     //Error state if error is not returned, but data does not exist and isn't loading.
+    else
       return (
         <div> There was a problem loading your data. Please try again.</div>
       );
@@ -47,13 +50,19 @@ export const SupplierCardsDisplay: React.FC<Props> = ({ searchField }: Props) =>
 
   return (
     <div className="mt-20 flex flex-row space-x-3 space-y-3 align-middle justify-center flex-wrap">
-      {filteredData.map((supplier) => (
-        <SupplierCard
-          supplier={supplier}
-          setSupplierToDelete={setSupplierToDelete}
-          setOpenDeleteSupplierModal={setOpenDeleteSupplierModal}
-        />
-      ))}
+      {filteredData.length > 0 ? (
+        filteredData.map((supplier) => (
+          <SupplierCard
+            supplier={supplier}
+            setSupplierToDelete={setSupplierToDelete}
+            setOpenDeleteSupplierModal={setOpenDeleteSupplierModal}
+          />
+        ))
+      ) : (
+        <NoSearchResults />
+      )}
+
+      {/* //DELETE SUPPLIER MODAL */}
       {supplierToDelete && (
         <DeleteSupplierModal
           supplier={supplierToDelete}
