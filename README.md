@@ -16,6 +16,13 @@ Run npm run dev to start the project on your machine
 
 NextJS, Supabase (and PostgreSQL through it), Prisma, Material UI, React, Typescript, SWR,
 
+## API routes
+
+http://localhost:3000/api/suppliers - GET all suppliers
+http://localhost:3000/api/suppliers/:id - GET, POST, DELETE, or PUT for a single supplier.
+http://localhost:3000/api/addresses - GET all addresses
+http://localhost:3000/api/addresses/:id - GET, POST, DELETE, or PUT for a single address. 
+
 ## Details
 
 WIP!!! :)
